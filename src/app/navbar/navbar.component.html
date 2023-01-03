@@ -1,0 +1,103 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+
+  <button mat-icon-button>
+    <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+
+  </button>
+  <span>Application</span>
+  <div class="spacer"></div>
+  <a mat-raised-button class="btn btn-primary sign-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+  <a mat-raised-button class="btn btn-primary sign-btn" data-bs-toggle="modal" data-bs-target="#exampleModal2">sign
+    up</a>
+  <a mat-raised-button color="accent" class="sign-btn">
+    <mat-icon (click)="sidenav.open()">home</mat-icon>
+  </a>
+
+</mat-toolbar>
+
+
+
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="home">home</a>
+      <a mat-list-item routerLink="button">Button</a>
+      <a mat-list-item routerLink="slider">Slider</a>
+      <a mat-list-item>DatePick</a>
+      <a mat-list-item routerLink="graph">Graph</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <router-outlet>
+      </router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<!-- Login !!!! -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Login !!!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Signup !!!! -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Sign up !!!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue" action="/signupaction">
+          <div class="mb-3">
+            <label for="exampleName" class="form-label">Name</label>
+            <input type="text" formControlName="name" class="form-control" id="exampleName"
+              aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" aria-describedby="passwordHelpBlock">
+            <div id="passwordHelpBlock" formControlName="password" class="form-text">Your password must be 8-20
+              characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="submit">Close</button>
+            <button type="submit" class="btn btn-primary" value="submit">Sign up</button>     
+          </div>
+        </form>
+      </div>
